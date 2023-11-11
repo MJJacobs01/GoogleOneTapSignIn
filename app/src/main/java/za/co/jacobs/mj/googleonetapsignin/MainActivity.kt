@@ -10,6 +10,8 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.compose.*
+import za.co.jacobs.mj.googleonetapsignin.navigation.*
 import za.co.jacobs.mj.googleonetapsignin.ui.theme.GoogleOneTapSignInTheme
 
 class MainActivity : ComponentActivity() {
@@ -17,10 +19,8 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             GoogleOneTapSignInTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
-
-                }
+                val navController = rememberNavController()
+                NavGraph(navController = navController)
             }
         }
     }
