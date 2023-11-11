@@ -45,12 +45,7 @@ fun GoogleButton(
     ) {
         Row(
             modifier = Modifier
-                .padding(
-                    start = 12.dp,
-                    end = 16.dp,
-                    top = 12.dp,
-                    bottom = 12.dp
-                )
+                .padding(12.dp)
                 .animateContentSize(
                     animationSpec = tween(
                         durationMillis = 300,
