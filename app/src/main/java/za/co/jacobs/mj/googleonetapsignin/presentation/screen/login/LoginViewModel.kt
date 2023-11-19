@@ -36,4 +36,12 @@ class LoginViewModel @Inject constructor(
             repository.saveSignedInState(signedIn)
         }
     }
+
+    fun updateMessageBarState() {
+        _messageBatState.value = MessageBarState(error = GoogleAccountNotFoundException())
+    }
 }
+
+class GoogleAccountNotFoundException(
+    override val message: String? = "Google account not found"
+) : Exception()

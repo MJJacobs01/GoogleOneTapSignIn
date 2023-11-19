@@ -20,7 +20,7 @@ import za.co.jacobs.mj.googleonetapsignin.util.*
 @Composable
 fun StartActivityForResult(
     key: Any,
-    onResultReceived: (String) -> Unit,
+    onResultReceived: (tokenId: String) -> Unit,
     onDialogDismissed: () -> Unit,
     launcher: (ManagedActivityResultLauncher<IntentSenderRequest, ActivityResult>) -> Unit
 ) {
