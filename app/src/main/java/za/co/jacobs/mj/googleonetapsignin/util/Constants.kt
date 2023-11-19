@@ -6,4 +6,6 @@ object Constants {
 
     const val preferencesName = "app_preferences"
     const val preferencesSignedInKey = "signed_in_key"
+
+    const val clientId = "646429245407-18v9bdcin7uni65i3obrgigqvvu50q2f.apps.googleusercontent.com"
 }
