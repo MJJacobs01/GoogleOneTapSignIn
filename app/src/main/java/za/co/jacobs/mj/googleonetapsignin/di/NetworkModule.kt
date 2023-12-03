@@ -10,6 +10,7 @@ import kotlinx.serialization.json.*
 import okhttp3.*
 import okhttp3.MediaType.Companion.toMediaType
 import retrofit2.Retrofit
+import za.co.jacobs.mj.googleonetapsignin.data.remote.*
 import za.co.jacobs.mj.googleonetapsignin.util.*
 import java.net.CookieManager
 import java.util.concurrent.*
@@ -45,5 +46,11 @@ object NetworkModule {
             .client(okHttpClient)
             .addConverterFactory(Json.asConverterFactory(contentType))
             .build()
+    }
+
+    @Provides
+    @Singleton
+    fun provideKTorApi(retrofit: Retrofit): KTorApi {
+        return retrofit.create(KTorApi::class.java)
     }
 }
