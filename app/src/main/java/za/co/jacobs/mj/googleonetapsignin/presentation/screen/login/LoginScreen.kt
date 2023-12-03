@@ -8,7 +8,9 @@ import androidx.compose.ui.platform.*
 import androidx.hilt.navigation.compose.*
 import androidx.navigation.*
 import za.co.jacobs.mj.googleonetapsignin.domain.model.*
+import za.co.jacobs.mj.googleonetapsignin.navigation.*
 import za.co.jacobs.mj.googleonetapsignin.presentation.screen.common.*
+import za.co.jacobs.mj.googleonetapsignin.util.*
 
 /**
  * Created by MJ Jacobs on 2023/11/11 at 15:07
@@ -23,6 +25,7 @@ fun LoginScreen(
 
     val signedInState by loginViewModel.signedInState
     val messageBarState by loginViewModel.messageBarState
+    val apiResponse by loginViewModel.apiResponse
 
     Scaffold(
         topBar = {
@@ -43,7 +46,7 @@ fun LoginScreen(
     StartActivityForResult(
         key = signedInState,
         onResultReceived = { tokenId ->
-            //  TODO: 2023/11/19
+            loginViewModel.verifyTokenOnBackend(request = ApiRequest(tokenId = tokenId))
         },
         onDialogDismissed = {
             loginViewModel.saveSignedInState(signedIn = false)
@@ -63,4 +66,31 @@ fun LoginScreen(
             }
         }
     )
+
+    LaunchedEffect(key1 = apiResponse) {
+        when (apiResponse) {
+            is RequestState.Success -> {
+                val response = (apiResponse as RequestState.Success<ApiResponse>).data.isSuccess
+                if (response) {
+                    navigateToProfileScreen(navController)
+                } else {
+                    loginViewModel.saveSignedInState(signedIn = false)
+                }
+            }
+
+            else -> {
+                /** No-Op **/
+            }
+        }
+    }
+}
+
+private fun navigateToProfileScreen(
+    navController: NavHostController
+) {
+    navController.navigate(route = Screen.Profile.route) {
+        popUpTo(route = Screen.Login.route) {
+            inclusive = true
+        }
+    }
 }
