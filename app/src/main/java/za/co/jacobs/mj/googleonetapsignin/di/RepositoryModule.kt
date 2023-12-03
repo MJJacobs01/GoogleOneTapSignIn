@@ -9,6 +9,7 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
+import za.co.jacobs.mj.googleonetapsignin.data.remote.*
 import za.co.jacobs.mj.googleonetapsignin.data.repository.*
 import za.co.jacobs.mj.googleonetapsignin.domain.repository.*
 import za.co.jacobs.mj.googleonetapsignin.util.*
@@ -37,8 +38,12 @@ object RepositoryModule {
     @Provides
     @Singleton
     fun provideRepository(
-        dataStoreOperations: DataStoreOperations
+        dataStoreOperations: DataStoreOperations,
+        kTorApi: KTorApi
     ): Repository {
-        return RepositoryImpl(dataStoreOperations = dataStoreOperations)
+        return RepositoryImpl(
+            dataStoreOperations = dataStoreOperations,
+            kTorApi = kTorApi
+        )
     }
 }
