@@ -3,6 +3,7 @@ package za.co.jacobs.mj.googleonetapsignin.navigation
 import androidx.compose.runtime.*
 import androidx.navigation.*
 import androidx.navigation.compose.*
+import za.co.jacobs.mj.googleonetapsignin.presentation.profile.*
 import za.co.jacobs.mj.googleonetapsignin.presentation.screen.login.*
 
 /**
@@ -23,7 +24,7 @@ fun NavGraph(
         }
 
         composable(route = Screen.Profile.route) {
-
+            ProfileScreen(navController = navController)
         }
     }
 }
