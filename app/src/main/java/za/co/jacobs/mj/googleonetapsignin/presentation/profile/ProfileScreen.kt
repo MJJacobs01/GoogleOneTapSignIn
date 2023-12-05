@@ -1,5 +1,6 @@
 package za.co.jacobs.mj.googleonetapsignin.presentation.profile
 
+import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.navigation.*
 
@@ -9,7 +10,21 @@ import androidx.navigation.*
 
 @Composable
 fun ProfileScreen(
-    navController:NavHostController
+    navController: NavHostController
 ) {
+    Scaffold(
+        topBar = {
+            ProfileTopBar(
+                onSave = {
 
+                },
+                onDeleteAllConfirmed = {
+
+                }
+            )
+        },
+        content = {_->
+
+        }
+    )
 }

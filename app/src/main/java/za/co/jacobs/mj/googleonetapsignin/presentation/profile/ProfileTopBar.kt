@@ -6,6 +6,7 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.res.*
 import za.co.jacobs.mj.googleonetapsignin.R
+import za.co.jacobs.mj.googleonetapsignin.component.*
 import za.co.jacobs.mj.googleonetapsignin.ui.theme.*
 
 /**
@@ -42,8 +43,20 @@ fun ProfileTopBarActions(
     onSave: () -> Unit,
     onDeleteAllConfirmed: () -> Unit
 ) {
+    var openDialog by remember { mutableStateOf(false) }
+
+    DisplayAlertDialog(
+        openDialog = openDialog,
+        onYesClicked = {
+            onDeleteAllConfirmed()
+        },
+        onDialogClosed = {
+            openDialog = false
+        }
+    )
+
     SaveAction(onSave = onSave)
-    DeleteAllAction(onDeleteAllConfirmed = onDeleteAllConfirmed)
+    DeleteAllAction(onDeleteAllConfirmed = { openDialog = true })
 }
 
 @Composable

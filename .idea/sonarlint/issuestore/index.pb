@@ -183,3 +183,5 @@ Q.idea/sonarlint/securityhotspotstore/8/b/8b177f3c1180e9104279a5fe032cf930294a6a
 Q.idea/sonarlint/securityhotspotstore/8/4/84789ec8832cabc286c6adef6b3513ff0b82d050,4/5/45c91dad09d06faf762e501b53e8766c142721fb
 Å
 Q.idea/sonarlint/securityhotspotstore/b/2/b24889eb834b68f0df621335d22c5b68bd438dea,2/3/23199a2cb1abe7493994326493cee62f47b14e0c
+Ñ
+Tapp/src/main/java/za/co/jacobs/mj/googleonetapsignin/component/DisplayAlertDialog.kt,3/7/376c3cd99c46b5732dfc18ab057a5d852a6bbb37
